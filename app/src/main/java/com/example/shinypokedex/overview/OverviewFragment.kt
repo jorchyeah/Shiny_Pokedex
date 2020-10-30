@@ -1,9 +1,7 @@
 package com.example.shinypokedex.overview
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +32,13 @@ class OverviewFragment : Fragment() {
 
         binding.pokemonRecycler.adapter = OverviewAdapter()
 
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.overview_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }
