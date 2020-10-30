@@ -32,6 +32,8 @@ class OverviewFragment : Fragment() {
 
         binding.viewModel = viewModel
 
+        binding.pokemonRecycler.adapter = OverviewAdapter()
+
         return binding.root
     }
 }
