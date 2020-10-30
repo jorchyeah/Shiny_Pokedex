@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shinypokedex.network.Pokemon
+import com.example.shinypokedex.network.PokemonApiFilters
 import com.example.shinypokedex.network.PokemonApiService
 import kotlinx.coroutines.launch
 
@@ -21,22 +22,26 @@ class OverviewViewModel : ViewModel() {
         get() = _pokemon
 
     init {
-        getPokemonByRegion()
+        getPokemonByRegion(PokemonApiFilters.SHOW_DEMO)
     }
 
-    private fun getPokemonByRegion() {
+    private fun getPokemonByRegion(filters: PokemonApiFilters) {
         _response.value = "Set API response"
         viewModelScope.launch {
             try {
                 _pokemon.value = PokemonApiService
                     .PokemonApi
                     .retrofitService
-                    .getPokemon()
+                    .getPokemon(filters.offset, filters.limit)
                     .results
                 _response.value = "Success: Pokemon were retrieved"
             } catch (e: Exception) {
                 _response.value = "Failure: ${e.message}"
             }
         }
+    }
+
+    fun updateFeed(filters: PokemonApiFilters){
+        getPokemonByRegion(filters)
     }
 }

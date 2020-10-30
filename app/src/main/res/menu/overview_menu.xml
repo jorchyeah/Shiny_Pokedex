@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="@string/all"
-        android:id="@+id/show_all_regions" />
+        android:title="@string/demo"
+        android:id="@+id/show_demo" />
     <item
         android:title="@string/kanto"
         android:id="@+id/show_kanto" />
+    <item
+        android:title="@string/johto"
+        android:id="@+id/show_johto" />
+    <item
+        android:title="@string/hoenn"
+        android:id="@+id/show_hoenn" />
+    <item
+        android:title="@string/sinnoh"
+        android:id="@+id/show_sinnoh" />
+    <item
+        android:title="@string/unova"
+        android:id="@+id/show_unova" />
+    <item
+        android:title="@string/kalos"
+        android:id="@+id/show_kalos" />
+    <item
+        android:title="@string/alola"
+        android:id="@+id/show_alola" />
+    <item
+        android:title="@string/galar"
+        android:id="@+id/show_galar" />
+    <item
+        android:title="@string/all"
+        android:id="@+id/show_all_regions" />
 </menu>
