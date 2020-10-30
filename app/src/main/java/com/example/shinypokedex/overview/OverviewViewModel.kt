@@ -3,10 +3,9 @@ package com.example.shinypokedex.overview
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.shinypokedex.network.PokemonApiService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.launch
 
 class OverviewViewModel : ViewModel() {
 
@@ -21,16 +20,17 @@ class OverviewViewModel : ViewModel() {
 
     private fun getPokemonByRegion() {
         _response.value = "Set API response"
-        PokemonApiService.PokemonApi.retrofitService.getPokemon().enqueue(object :
-            Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                _response.value = response.body()
+        viewModelScope.launch {
+            try {
+                val listResult = PokemonApiService
+                    .PokemonApi
+                    .retrofitService
+                    .getPokemon()
+                    .results
+                _response.value = "Success: ${listResult.size} Pokemon were retrieved"
+            } catch (e: Exception) {
+                _response.value = "Failure: ${e.message}"
             }
-
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                _response.value = "Failure: ${t.message}"
-            }
-
-        })
+        }
     }
 }
