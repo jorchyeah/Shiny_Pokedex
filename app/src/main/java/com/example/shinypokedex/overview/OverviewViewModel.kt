@@ -18,7 +18,7 @@ class OverviewViewModel : ViewModel() {
     val response: LiveData<String>
         get() = _response
 
-    val pokemon : LiveData<List<Pokemon>>
+    val pokemon: LiveData<List<Pokemon>>
         get() = _pokemon
 
     init {
@@ -41,7 +41,7 @@ class OverviewViewModel : ViewModel() {
         }
     }
 
-    fun updateFeed(filters: PokemonApiFilters){
+    fun updateFeed(filters: PokemonApiFilters) {
         getPokemonByRegion(filters)
     }
 }

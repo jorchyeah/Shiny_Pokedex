@@ -54,6 +54,7 @@ class OverviewFragment : Fragment() {
                 R.id.show_kalos -> PokemonApiFilters.SHOW_KALOS
                 R.id.show_alola -> PokemonApiFilters.SHOW_ALOLA
                 R.id.show_galar -> PokemonApiFilters.SHOW_GALAR
+                R.id.show_all_regions -> PokemonApiFilters.SHOW_ALL
                 else -> PokemonApiFilters.SHOW_DEMO
             }
         )
